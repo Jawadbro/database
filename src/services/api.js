@@ -1,5 +1,5 @@
 // API base URL - adjust if your backend runs on a different port
-const API_BASE_URL = 'https://crm-sullivan-sunday-shanghai.trycloudflare.com';
+const API_BASE_URL = 'https://varied-athletic-compact-unified.trycloudflare.com';
 
 class ApiService {
   // Search products
