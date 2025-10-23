@@ -1,5 +1,5 @@
 // API base URL - adjust if your backend runs on a different port
-const API_BASE_URL = 'https://qualifications-decided-maximum-ice.trycloudflare.com';
+const API_BASE_URL = 'https://backend-1-umrx.onrender.com';
 
 class ApiService {
   // Search products
