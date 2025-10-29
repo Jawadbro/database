@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Casa Rom Sales Quotation System – Frontend
+*A React web application (deployed via Vercel) for product search and quotation generation*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This frontend powers the UI for the “Casa Rom” quotation system. Built with **TypeScript/React**, it interacts with a FastAPI backend and provides:
+- A searchable product catalogue (leveraging hybrid BM25 + vector similarity search via the backend)
+- Quotation generation UI: users can select products, add/remove them from quotes, view pricing adjustments (transfer discounts, installment markups)
+- Responsive design, clean UX, and deployment on Vercel
 
-## Available Scripts
+## Architecture & Folder Structure
+- The project was bootstrapped with Create React App (TypeScript template).
+- Main folders:
+  - `src/` — React components, hooks, services (API integration), UI assets
+  - `public/` — static assets
+- `package.json` — dependencies (React, types, UI library if used)
+- Deployed at: https://database-five-mu.vercel.app/
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
+- Node.js v16+ (or latest LTS)
+- `npm` or `yarn`
+- Access to backend API (base URL and any authentication/token details)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Setup & Run Locally
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/Jawadbro/database.git
+   cd database
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn
+   ```
+3. Configure environment variables (create `.env.local`):
+   ```text
+   REACT_APP_API_BASE_URL=https://your-backend-url.com/api
+   ```
+4. Run in development mode:
+   ```bash
+   npm start
+   ```
+   or
+   ```bash
+   yarn start
+   ```
+   The app will open at `http://localhost:3000` by default.
+5. Build for production:
+   ```bash
+   npm run build
+   ```
+   or
+   ```bash
+   yarn build
+   ```
+   Deploy the contents of `build/` (e.g., automatically via Vercel).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Key Features
+- **Product Search UI**: Search bar with suggestions, filters (brand, price range) — consumes backend’s hybrid search results.
+- **Quotation Workflow**: Add products to quote list, adjust quantities, view dynamic pricing that reflects backend‑computed discounts/markups.
+- **Responsive & Accessible**: Mobile‑friendly layout, attention to UX details, clean state management (React hooks, context or Redux if used).
+- **Deployment Ready**: Automatically deploys to Vercel on push with configured environment variables.
 
-### `npm test`
+## Deployment & Scaling
+- Hosted on Vercel (automatic CI/CD on push to main branch).
+- Ensure environment variable `REACT_APP_API_BASE_URL` is set in Vercel’s project settings.
+- For large product catalogues or search results: consider caching results locally, pagination/infinite scroll, and debounced search input to reduce backend load.
+- Monitor performance (bundle size, network requests) and optimize (code splitting, lazy load, memoization) if UI becomes sluggish.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Documentation & Maintenance
+- Each major component (e.g., `SearchBar`, `QuoteList`) should include docstrings/comments describing props, state, and effects.
+- API service files (e.g., `api.ts` or `services/searchService.ts`) should document endpoints and expected responses.
+- UI library or design system (if used) should have style guidelines and consistent theming for maintainability.
+- When adding new features (e.g., filtering, quote sharing, export PDF), update this README and add component‑level tests.
 
-### `npm run build`
+## Contribution & Workflow
+- Use feature branches (`feature/search‑improvements`, `feature/quote‑export`).
+- Write unit tests (e.g., Jest + React Testing Library) for new UI logic.
+- Commit message convention: `<scope>: <short description>` (e.g., `search: add filter by brand`).
+- Pull requests require code review and passing tests before merge.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License & Confidentiality
+This codebase is proprietary and shared under confidentiality. Unauthorized public sharing or disclosure is prohibited.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+For questions or issues, please contact the project lead or repository owner.
